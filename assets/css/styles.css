@@ -1,29 +1,7 @@
-button{
-    margin-top: 5px;
-}
-#inputValue{
-    width: 750px;
-    font-size: 1rem;
-    font-weight: 400px;
-    line-height: 1.5rem;
-    outline: none;
-    color: gray;
-    background-color: white;
-    border-radius: .25rem;
+body{
+    background-color: black;
 }
 
-
-
-#search{
-    color: white;
-    background-color: blue;
-    outline: none;
-    min-height: 38px;
-    font-weight: 400;
-    text-align: center;
-    cursor: pointer;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
+.btn{
+    margin: 15px 5px;
 }
