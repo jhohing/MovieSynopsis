@@ -7,6 +7,7 @@ var movieRelease = document.querySelector("#movieRelease");
 var movieRuntime = document.querySelector("#movieRuntime");
 var movieImages = document.querySelector("#movieImages")
 var movieRate = document.querySelector("#movieRate");
+var hide = document.querySelector("#hide");
 
 $("#search").on("click", function(event) {
 
@@ -22,6 +23,7 @@ $("#search").on("click", function(event) {
     })
     .then(function(response){
       console.log(response);
+      hide.setAttribute("style" , "display: none;");
       movieTitle.textContent = response.Title;
       movieGenre.textContent = response.Genre
       moviePlot.textContent = response.Plot;  
@@ -35,5 +37,10 @@ $("#search").on("click", function(event) {
       movieRuntime.textContent = response.Runtime;
       movieRelease.textContent = response.Released;
       $('#movieImages').prepend(html);
+      // //local storage
+      var movieHistory = JSON.parse(localStorage.getItem("Movie")) || [];
+      var value = $("#movieName").val();
+      movieHistory.push(value);
+      localStorage.setItem("Movie", JSON.stringify(movieHistory)); 
     });
   });
