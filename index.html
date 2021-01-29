@@ -6,71 +6,168 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <meta name="Description" content="Enter your description here" />
     <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"
+      rel="stylesheet" mhref="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
     />
+
+    <!-- UIkit CSS -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+      href="https://cdn.jsdelivr.net/npm/uikit@3.6.14/dist/css/uikit.min.css"
     />
-    <link rel="stylesheet" href="./assets/css/styles.css" />
-    <title>Title</title>
-  </head>
-  <body>
 
+    <!-- UIkit JS -->
+    <script src="https://cdn.jsdelivr.net/npm/uikit@3.6.14/dist/js/uikit-icons.min.js"></script>
+
+    <link rel="stylesheet" href="assets/css/style.css" />
+
+    <script
+      src="https://code.jquery.com/jquery-3.1.1.min.js"
+      integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+      crossorigin="anonymous"
+    ></script>
+    <script src="semantic/dist/semantic.min.js"></script>
+
+    <link rel="stylesheet" href="multirange.css" />
+    <script src="multirange.js"></script>
+    <!-- Our CSS File -->
+    <link rel="stylesheet" href="assets/css/styles.css" />
+
+    <title>MovieSynopsis</title>
+  </head>
+
+  <body>
 
     <div class="container">
       <h1>Welcome Start With a Search</h1>
 
       <form>
-        <div class="form-group">
+        <div class="from-group">
+
           <label for="movieName">Movie Tittle</label>
-          <input type="text" placeholder="Search A Movie" value="Movie Tittle" id="movieName" />
+          <input
+            type="text"
+            placeholder="Search A Movie"
+            value="Movie Tittle"
+            id="movieName"
+          />
+          <br />
+          <!-- search button -->
+          <button class="uk-button uk-button-primary btn" id="search">
+            Search
+          </button>
           <br />
 
           <!-- <label for="year">Year</label>
-          <input type="range" name="year" id="year"> -->
-          
-          
-          
+          <input type="range" name="year" id="year"  > -->
 
           <p>Select A Genre</p>
-            <!-- change radio button to checkbox -->
-          <input type="radio" name="genre" id="action" value="action" />
+          <input type="checkbox" name="genre" id="action" value="action" />
           <label for="action">Action</label><br />
 
-          <input type="radio" name="genre" id="animation" value="animation" />
+          <input
+            type="checkbox"
+            name="genre"
+            id="animation"
+            value="animation"
+          />
           <label for="animation">Animation</label><br />
 
-          <input type="radio" name="genre" id="comedy" value="comedy" />
+          <input type="checkbox" name="genre" id="comedy" value="comedy" />
           <label for="comedy">Comedy</label><br />
 
-          <input type="radio" name="genre" id="crime" value="crime" />
+          <input type="checkbox" name="genre" id="crime" value="crime" />
           <label for="crime">Crime</label><br />
 
-          <input type="radio" name="genre" id="drama" value="drama" />
+          <input type="checkbox" name="genre" id="drama" value="drama" />
           <label for="drama">Drama</label><br />
 
-          <input type="radio" name="genre" id="history" value="history" />
+          <input type="checkbox" name="genre" id="history" value="history" />
           <label for="history">History</label><br />
 
-          <input type="radio" name="genre" id="horror" value="horror" />
+          <input type="checkbox" name="genre" id="horror" value="horror" />
           <label for="horror">Horror</label><br />
 
-          <input type="radio" name="genre" id="romance" value="romance" />
+
+          <input type="checkbox" name="genre" id="romance" value="romance" />
           <label for="romance">Roman</label><br />
 
-          <input type="radio" name="genre" id="science" value="science">
-          <label for="science">Science Fiction</label><br>
+          <input type="checkbox" name="genre" id="science" value="science" />
+          <label for="science">Science Fiction</label><br />
 
-          <input type="radio" name="genre" id="thriller" value="thriller">
-          <label for="thriller">Thriller</label><br>
+          <input type="checkbox" name="genre" id="thriller" value="thriller" />
+          <label for="thriller">Thriller</label><br />
 
-          <input type="radio" name="genre" id="other" value="other">
-          <label for="other">Other</label><br>
-
+          <input type="checkbox" name="genre" id="other" value="other" />
+          <label for="other">Other</label><br />
         </div>
-        <button type="submit" id="search"> Search</button>
+        <!-- Search button -->
+        <button class="uk-button uk-button-primary btn" id="search">
+          Search
+        </button>
+
+        <!-- Results Section -->
+        <div
+          class="uk-child-width-1-3@m uk-grid-small uk-grid-match resultcontainer"
+          uk-grid
+        >
+          <div>
+            <div class="uk-card uk-card-secondary uk-card-body">
+              <h3 class="uk-card-title">Results</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Lorem
+                ipsum dolor sit amet consectetur adipisicing elit. Aliquid
+                iusto, nesciunt obcaecati accusamus necessitatibus tempore hic
+                sequi? Ipsam cupiditate porro exercitationem maxime amet magni
+                voluptatem veritatis autem voluptatibus. Ut, offici Lorem ipsum
+                dolor sit amet consectetur, adipisicing elit. Nam eaque fuga,
+                rem sed cupiditate consectetur deleniti at iste. Sit magnam
+                aspernatur quasi neque ex soluta id maiores provident aliquam
+                iste. Doloribus fugit natus iste dolorum, sequi deserunt earum
+                quisquam sed esse aspernatur labore facilis veniam quo voluptate
+                tempora iusto corporis voluptatem temporibus commodi?
+                Perspiciatis explicabo ad ab? Sunt, totam laboriosam? Voluptas
+                optio veritatis molestias obcaecati. Voluptate voluptatem ab
+                dolore ipsum libero pariatur repellendus excepturi, recusandae
+                laudantium suscipit voluptas quos explicabo, aliquam quam.
+                Libero animi molestiae magnam ratione culpa, corporis neque.
+                Veniam, perferendis rerum, amet deleniti aperiam voluptatum odit
+                sint omnis provident laudantium dolorem sequi quaerat similique
+                a. Quo cupiditate eum, culpa dicta sequi minima rem? Quia sunt
+                qui eum odit? Earum, ratione fuga illo culpa aspernatur neque ad
+                quisquam quam blanditiis explicabo? Eligendi, vero aliquid! Quam
+                illo quos quidem tempora, assumenda itaque fuga labore nemo
+                omnis tenetur perspiciatis, aliquam mollitia! Vel ex, rem dolor
+                debitis numquam dolorum fugit illo neque deleniti nisi id
+                cupiditate blanditiis iste quia maiores magnam vitae nostrum,
+                natus saepe animi porro nam temporibus inventore! Quo, ad?
+                Accusantium ipsam illum impedit itaque aspernatur, repellat quo
+                cumque, recusandae officiis, exercitationem fugit rem voluptatem
+                rerum corporis deserunt autem obcaecati nostrum omnis fuga!
+                Distinctio voluptatem, officiis ad quaerat enim magnam. Optio
+                fugit aspernatur numquam sint nesciunt quibusdam culpa,
+                provident corporis a, magni sapiente temporibus, tenetur ut quo
+                doloribus cum saepe expedita iure? Laboriosam et ea quasi
+                tempore hic. Unde, incidunt. Saepe doloribus alias placeat
+                repudiandae labore, at sit maiores repellat voluptatem ratione?
+                Molestiae porro ipsam quidem accusantium ipsum eum ad fuga atque
+                quos, tempora illum reiciendis a quo illo excepturi. Deserunt
+                nostrum eligendi obcaecati expedita illo cumque iure ea odit
+                repellendus, nisi, nam tenetur amet fuga, aut vitae deleniti
+                impedit distinctio accusantium voluptatem ducimus repellat at
+                dolorum reiciendis assumenda? Dignissimos? Culpa molestias,
+                laboriosam, officia maxime impedit non eaque iure sunt minima
+                obcaecati eveniet enim sequi velit cupiditate distinctio harum
+                facilis dolorem corporis ea nostrum veritatis accusantium.
+                Possimus dicta in doloribus! Repellat eos libero eius architecto
+                praesentium commodi beatae obcaecati. Nulla, voluptas optio
+                consequuntur beatae ducimus, ab tenetur officiis vero amet,
+                voluptate eveniet inventore ut! Nihil, consequatur? Nesciunt
+                fugit vitae corrupti.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- <button type="submit" id="search"> Search</button> -->
       </form>
     </div>
     <div class = "movieResult">
@@ -82,8 +179,10 @@
         <h3 id = "movieRelease"></h3>
         <h3 id = "movieRuntime"></h3>
     </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src= assets/js/script.js></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>
+
