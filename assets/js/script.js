@@ -17,58 +17,91 @@
 //   //calls the displayMovieInfo function when the submit button is clicked
 //   $(document).on("click", "#search", displayMovieInfo);
 
-$("#search").on("click", function(event){
-    event.preventDefault();
+$("#search").on("click", function (event) {
+  event.preventDefault();
 
-    var movie = $("#movieName").val();
-    var queryURL = "https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US";
+  var movie = $("#movieName").val();
+  var queryURL = "https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US";
 
-    // Creates AJAX call for the specific movie button being clicked
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      console.log(response);
+  // Creates AJAX call for the specific movie button being clicked
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  }).then(function (response) {
+    console.log(response);
 
-    });
+  });
 });
 
-//ID for the movie 
-var search = document.querySelector("#search");
-var movieTitle = document.querySelector("#movieTitle");
-var moviePlot = document.querySelector("#moviePlot");
-var movieGenre = document.querySelector("#movieGenre");
-var movieRelease = document.querySelector("#movieRelease");
-var movieRuntime = document.querySelector("#movieRuntime");
-var movieImages = document.querySelector("#movieImages")
-var movieRate = document.querySelector("#movieRate");
+//Search Result 
+$("#search").on("click", function (event) {
 
-$("#search").on("click", function(event) {
-
-    event.preventDefault();
-
-    var movie = $("#movieName").val();
-    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+  event.preventDefault();
 
 
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    })
-    .then(function(response){
+  var movie = $("#movieName").val();
+  var queryURL;
+  if($(`input[type = radio]:checked`).val() === "multi"){
+    queryURL = "https://www.omdbapi.com/?s=" + movie + "&apikey=trilogy";
+}
+  else if($(`input[type = radio]:checked`).val() === "single"){
+    queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+}
+
+  //getting the title, genre, plot, image, rate,
+  //runtime, and release
+  $.ajax({
+    url: queryURL,
+    method: "GET"
+  })
+    .then(function (response) {
       console.log(response);
-      movieTitle.textContent = response.Title;
-      movieGenre.textContent = response.Genre
-      moviePlot.textContent = response.Plot;  
-     //images
-      var html = `
-      <figure>
-        <img src="${response.Poster}" alt="${response.Title}"/>
-      </figure>
-      `;
-      movieRate.textContent = response.Rated;
-      movieRuntime.textContent = response.Runtime;
-      movieRelease.textContent = response.Released;
-      $('#movieImages').prepend(html);
+      console.log($(`input[type = radio]:checked`).val());
+      //Single Search
+      if($(`input[type = radio]:checked`).val() === "single"){
+        var html = `
+        <figure>
+          <img src="${response.Poster}" alt="${response.Title}"/>
+        </figure>
+        `;
+        var movieTitle = $("<h3>").html(response.Title);
+        var movieGenre = $("<h3>").html(response.Genre);
+        var moviePlot = $("<p>").html(response.Plot);
+        var movieRate = $("<h3>").html(response.Rated);
+        var movieRuntime = $("<h3>").html(response.Runtime);
+        var movieRelease = $("<h3>").html(response.Released);
+        $("#movieResult").append(movieTitle);
+        $("#movieResult").append(movieGenre);
+        $("#movieResult").append(moviePlot);
+        $("#movieResult").append(html);
+        $("#movieResult").append(movieRate);
+        $("#movieResult").append(movieRuntime);
+        $("#movieResult").append(movieRelease);
+
+      }
+      //Multi Search 
+      else if($(`input[type = radio]:checked`).val() === "multi"){
+      //append the results to the page 
+      for (var i = 0; i < response.Search.length; i++) {
+        console.log(response.Search[i].Title);
+        var title = $("<h3>").html(response.Search[i].Title);
+        var image = `
+        <figure>
+          <img src="${response.Search[i].Poster}" alt="${response.Search[i].Title}"/>
+        </figure>
+        `;
+        var year = $("<p>").html(response.Search[i].Year);
+        var type = $("<h3>").html("Type: " + response.Search[i].Type);
+        $("#movieResult").append(title);
+        $("#movieResult").append(year);
+        $("#movieResult").append(image);
+        $("#movieResult").append(type);
+      }
+    }
+      // //local storage
+      var movieHistory = JSON.parse(localStorage.getItem("Movie")) || [];
+      var value = $("#movieName").val();
+      movieHistory.push(value);
+      localStorage.setItem("Movie", JSON.stringify(movieHistory));
     });
-  });
+});
