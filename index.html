@@ -53,13 +53,16 @@
           <div class="columns small-2 large-4">
             <div class="genre">
               <h1>Welcome Start With a Search</h1>
+            <div class = row>
+              <input type = "radio" id = "singleChoice" name = "searchchoice" value = "single">Single Search</input>
+              <input type = "radio" id = "multiChoice" name = "searchchoice" value = "multi">Multi Search</input>
+            </div>
               <input
                 type="text"
                 placeholder="Search A Movie"
-                value="Movie Tittle"
+                value="Movie Title"
                 id="movieName"
               />
-              <button class="btn">Search</button>
               <p>Select A Genre</p>
               <input type="checkbox" name="genre" id="action" value="action" />
               <label for="action">Action</label><br />
@@ -142,66 +145,17 @@
 
             <div class="result-container">
               <div class="uk-card uk-card-secondary uk-card-body">
-                <h3 class="uk-card-title">Results</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                  Aliquid iusto, nesciunt obcaecati accusamus necessitatibus
-                  tempore hic sequi? Ipsam cupiditate porro exercitationem
-                  maxime amet magni voluptatem veritatis autem voluptatibus. Ut,
-                  offici Lorem ipsum dolor sit amet consectetur, adipisicing
-                  elit. Nam eaque fuga, rem sed cupiditate consectetur deleniti
-                  at iste. Sit magnam aspernatur quasi neque ex soluta id
-                  maiores provident aliquam iste. Doloribus fugit natus iste
-                  dolorum, sequi deserunt earum quisquam sed esse aspernatur
-                  labore facilis veniam quo voluptate tempora iusto corporis
-                  voluptatem temporibus commodi? Perspiciatis explicabo ad ab?
-                  Sunt, totam laboriosam? Voluptas optio veritatis molestias
-                  obcaecati. Voluptate voluptatem ab dolore ipsum libero
-                  pariatur repellendus excepturi, recusandae laudantium suscipit
-                  voluptas quos explicabo, aliquam quam. Libero animi molestiae
-                  magnam ratione culpa, corporis neque. Veniam, perferendis
-                  rerum, amet deleniti aperiam voluptatum odit sint omnis
-                  provident laudantium dolorem sequi quaerat similique a. Quo
-                  cupiditate eum, culpa dicta sequi minima rem? Quia sunt qui
-                  eum odit? Earum, ratione fuga illo culpa aspernatur neque ad
-                  quisquam quam blanditiis explicabo? Eligendi, vero aliquid!
-                  Quam illo quos quidem tempora, assumenda itaque fuga labore
-                  nemo omnis tenetur perspiciatis, aliquam mollitia! Vel ex, rem
-                  dolor debitis numquam dolorum fugit illo neque deleniti nisi
-                  id cupiditate blanditiis iste quia maiores magnam vitae
-                  nostrum, natus saepe animi porro nam temporibus inventore!
-                  Quo, ad? Accusantium ipsam illum impedit itaque aspernatur,
-                  repellat quo cumque, recusandae officiis, exercitationem fugit
-                  rem voluptatem rerum corporis deserunt autem obcaecati nostrum
-                  omnis fuga! Distinctio voluptatem, officiis ad quaerat enim
-                  magnam. Optio fugit aspernatur numquam sint nesciunt quibusdam
-                  culpa, provident corporis a, magni sapiente temporibus,
-                  tenetur ut quo doloribus cum saepe expedita iure? Laboriosam
-                  et ea quasi tempore hic. Unde, incidunt. Saepe doloribus alias
-                  placeat repudiandae labore, at sit maiores repellat voluptatem
-                  ratione? Molestiae porro ipsam quidem accusantium ipsum eum ad
-                  fuga atque quos, tempora illum reiciendis a quo illo
-                  excepturi. Deserunt nostrum eligendi obcaecati expedita illo
-                  cumque iure ea odit repellendus, nisi, nam tenetur amet fuga,
-                  aut vitae deleniti impedit distinctio accusantium voluptatem
-                  ducimus repellat at dolorum reiciendis assumenda? Dignissimos?
-                  Culpa molestias, laboriosam, officia maxime impedit non eaque
-                  iure sunt minima obcaecati eveniet enim sequi velit cupiditate
-                  distinctio harum facilis dolorem corporis ea nostrum veritatis
-                  accusantium. Possimus dicta in doloribus! Repellat eos libero
-                  eius architecto praesentium commodi beatae obcaecati. Nulla,
-                  voluptas optio consequuntur beatae ducimus, ab tenetur
-                  officiis vero amet, voluptate eveniet inventore ut! Nihil,
-                  consequatur? Nesciunt fugit vitae corrupti.
-                </p>
+                <h3 class="uk-card-title" >Results</h3>
+                  <div id = "movieResult">
+
+                  </div>
               </div>
             </div>
           </div>
         </form>
       </div>
     </div>
-    <div class = "movieResult">
+    <!-- <div class = "movieResult">
         <h3 id = "movieTitle"></h3>
         <h3 id = "movieGenre"></h3>
         <p id = "moviePlot"></p>
@@ -209,7 +163,7 @@
         <h3 id = "movieRate"></h3>
         <h3 id = "movieRelease"></h3>
         <h3 id = "movieRuntime"></h3>
-    </div>
+    </div> -->
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src= assets/js/script.js></script>
