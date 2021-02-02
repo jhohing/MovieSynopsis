@@ -1,7 +1,44 @@
 body{
-    background-color: black;
+   margin-left: 5px;
+}
+h1{
+    color: whitesmoke;
+}
+.backgroundimg{
+    background-image:url("../img/image.png") ;
+    height:3000px;
+    width: 100%;
+}
+
+
+.genre,
+.tittle-search{
+    background-color: red;
+    opacity: 85%;
+    margin-left: 45px;
+    margin-right: 45px;
+    
 }
 
 .btn{
     margin: 15px 5px;
+    background-color: tomato;
+    border-radius: 3px;
+    height: 30px;
+    width: 200px;
+}
+.result-container{
+    background-color: rgba(255, 255, 255, 0.5);
+    color: whitesmoke;
+}
+
+.movie-icon{
+    width: 50px;
+    height: 50px;
+}
+/* .my-menu{
+    align-items: center;
+}    */
+.my-menu{
+    background-color: turquoise;
 }

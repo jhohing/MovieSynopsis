@@ -48,7 +48,14 @@ $("#search").on("click", function(event) {
     event.preventDefault();
 
     var movie = $("#movieName").val();
-    var queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy";
+    var queryURL;
+
+    if($("#searchChoice").val() === "multi"){
+        queryURL = "https://www.omdbapi.com/?s=" + movie + "&apikey=trilogy"
+    }
+    else{
+        queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy"
+    }
 
 
     $.ajax({
@@ -70,11 +77,12 @@ $("#search").on("click", function(event) {
             movieRuntime.textContent = response.Runtime;
             movieRelease.textContent = response.Released;
             $('#movieImages').prepend(html);
-            var year = response.year;
+            var releaseYear = response.Year;
+            console.log(releaseYear);
 
             //search for movies in the tmdb api to pull the movie id
             $.ajax({
-                url: "https://api.themoviedb.org/3/search/movie?api_key=672a687385a347033563aaac66395287&query=" + movie + "&year=" + year,
+                url: "https://api.themoviedb.org/3/search/movie?api_key=672a687385a347033563aaac66395287&query=" + movie + "&primary_release_year=" + releaseYear,
                 method: "GET"
             })
                 .then(function (response) {
