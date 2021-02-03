@@ -17,22 +17,6 @@
 //   //calls the displayMovieInfo function when the submit button is clicked
 //   $(document).on("click", "#search", displayMovieInfo);
 
-$("#search").on("click", function(event){
-    event.preventDefault();
-
-    var movie = $("#movieName").val();
-    var queryURL = "https://api.themoviedb.org/3/movie/{movie_id}?api_key=<<api_key>>&language=en-US";
-
-    // Creates AJAX call for the specific movie button being clicked
-    $.ajax({
-      url: queryURL,
-      method: "GET"
-    }).then(function(response) {
-      console.log(response);
-
-    });
-});
-
 //ID for the movie 
 var search = document.querySelector("#search");
 var movieTitle = document.querySelector("#movieTitle");
@@ -43,17 +27,29 @@ var movieRuntime = document.querySelector("#movieRuntime");
 var movieImages = document.querySelector("#movieImages")
 var movieRate = document.querySelector("#movieRate");
 
-$("#search").on("click", function(event) {
+// //settings for the utelly api which is being used through rapidapi.com
+// const settings = {
+//     "async": true,
+//     "crossDomain": true,
+//     "url": "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + movie + "&country=us",
+//     "method": "GET",
+//     "headers": {
+//         "x-rapidapi-key": "8b595659e5msh577c7ebae66487cp1fe1b8jsnb6613348d882",
+//         "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com"
+//     }
+// };
+
+$("#search").on("click", function (event) {
 
     event.preventDefault();
 
     var movie = $("#movieName").val();
     var queryURL;
 
-    if($("#searchChoice").val() === "multi"){
+    if ($("#searchChoice").val() === "multi") {
         queryURL = "https://www.omdbapi.com/?s=" + movie + "&apikey=trilogy"
     }
-    else{
+    else {
         queryURL = "https://www.omdbapi.com/?t=" + movie + "&apikey=trilogy"
     }
 
@@ -77,18 +73,42 @@ $("#search").on("click", function(event) {
             movieRuntime.textContent = response.Runtime;
             movieRelease.textContent = response.Released;
             $('#movieImages').prepend(html);
-            var releaseYear = response.Year;
-            console.log(releaseYear);
-
-            //search for movies in the tmdb api to pull the movie id
-            $.ajax({
-                url: "https://api.themoviedb.org/3/search/movie?api_key=672a687385a347033563aaac66395287&query=" + movie + "&primary_release_year=" + releaseYear,
-                method: "GET"
-            })
-                .then(function (response) {
-                    console.log(response);
-                });
         });
+
+        //search for movies in the utelly api to pull the watch providers
+        $.ajax({
+            async: true,
+            crossDomain: true,
+            url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/lookup?term=" + movie + "&country=us",
+            method: "GET",
+            headers: {
+                "x-rapidapi-key": "8b595659e5msh577c7ebae66487cp1fe1b8jsnb6613348d882",
+                "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com"
+            }
+        })
+            .then(function (response) {
+                console.log(response);
+                for(var i = 0; i < response.results.length; i++){
+                    console.log(response.results[i].external_ids.imdb.id)
+                    var imdbID =  response.results[i].external_ids.imdb.id;
+                    
+                    $.ajax({
+                        async: true,
+                        crossDomain: true,
+                        url: "https://utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com/idlookup?source_id=" + imdbID + "&source=imdb&country=us",
+                        method: "GET",
+                        headers: {
+                            "x-rapidapi-key": "8b595659e5msh577c7ebae66487cp1fe1b8jsnb6613348d882",
+                            "x-rapidapi-host": "utelly-tv-shows-and-movies-availability-v1.p.rapidapi.com"
+                        }
+                    })
+                    .then(function (response){
+                        console.log(response);
+                    });
+
+
+                }
+            });
 
 
 });
