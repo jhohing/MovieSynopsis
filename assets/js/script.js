@@ -86,7 +86,7 @@ $("#search").on("click", function (event) {
             }
         })
             .then(function (response) {
-                console.log(response);
+                //console.log(response);
                 for(var i = 0; i < response.results.length; i++){
                     console.log(response.results[i].external_ids.imdb.id)
                     var imdbID =  response.results[i].external_ids.imdb.id;
@@ -103,6 +103,9 @@ $("#search").on("click", function (event) {
                     })
                     .then(function (response){
                         console.log(response);
+                        for(var j = 0; j < response.collection.length; j++){
+                          console.log(response.collection[i].locations[j].displayName);
+                        }
                     });
 
 
