@@ -168,5 +168,24 @@ $("#search").on("click", function (event) {
       var value = $("#movieName").val();
       movieHistory.push(value);
       localStorage.setItem("Movie", JSON.stringify(movieHistory));
+        var movieHist = document.querySelector("#searchHistory")
+        var getMovie = JSON.parse(window.localStorage.getItem("Movie")) || [];
+        getMovie.sort(function(a, b) {
+          return b.movie - a.movie;
+        });
+        getMovie.forEach(function (movie) {
+          var listItem = document.createElement("li");
+          listItem.textContent = movie;
+          movieHist.appendChild(listItem);
+      });
     });
+});
+
+function clearHistory(){
+  window.localStorage.removeItem("Movie");
+  window.location.reload();
+}
+$("#clear").on("click", function (event){
+  console.log(event.target);
+  clearHistory();
 });
