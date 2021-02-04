@@ -53,17 +53,19 @@
       <section>
         <div class="genre">
           <h1>Welcome Start With a Search</h1>
+          <div class = row>
+            <input type = "radio" id = "singleChoice" name = "searchchoice" value = "single">Single Search</input>
+            <input type = "radio" id = "multiChoice" name = "searchchoice" value = "multi">Multi Search</input>
+          </div>
           <input
             type="text"
             placeholder="Search A Movie"
-            value="Movie Tittle"
+            value="Movie Title"
             id="movieName"
           />
-
-          <button class="btn">Search</button>
-          <p>Select A Genre</p>
+          <!-- <p>Select A Genre</p> -->
           <!-- first grid-x -->
-          <div class="grid-x">
+          <!-- <div class="grid-x">
             <div class="cell auto">
               <input type="checkbox" name="genre" id="action" value="action" />
               <label for="action">Action</label>
@@ -141,29 +143,21 @@
             <div class="cell auto">
               <input type="checkbox" name="genre" id="other" value="other" />
 
-              <label for="other">Other</label><br />
+              <label for="other">Other</label><br /> -->
                   <!-- Search button -->
-              <button class="uk-button uk-button-primary btn" id="search">
-                Search
-              </button>
-              <button class="uk-button uk-button-primary btn" id="clear">
-                Clear
-              </button>
-              <div id = "searchHistory">
-                  <h3>History</h3>
-              </div>
-            </div>
-          </div>
-    
-              <label for="other">Other</label>
-            </div>
-          </div>
-
+            <!-- </div>
+          </div> -->
           <button class="uk-button uk-button-primary btn" id="search">
-            search
+            Search
           </button>
+          <button class="uk-button uk-button-primary btn" id="clear">
+            Clear
+          </button>
+          <div id = "searchHistory">
+              <h3>History</h3>
+          </div>
         </div>
-
+    
         <!-- Search button -->
       </section>
 
