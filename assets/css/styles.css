@@ -7,9 +7,10 @@ h1{
     color: whitesmoke;
 }
 .backgroundimg{
-    background-image:url("../img/image.png") ;
-    height:3000px;
+    background-image:url("../img/image.png");
+    background-size:cover;
     width: 100%;
+    
 }
 
 
