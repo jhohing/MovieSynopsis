@@ -21,4 +21,4 @@ People spend so much extra time searching for movies. With this program, people 
 https://jhohing.github.io/MovieSynopsis/
 
 ## Screen Shot
-./assets/img/ScreenShot.png
+![](./assets/img/ScreenShot.png)
